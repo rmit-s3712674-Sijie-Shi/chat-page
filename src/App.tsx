@@ -1,11 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Login from './loginpage/login';
 
 function App() {
   return (
     <div className="App">
-      chat app
+      <Login></Login>
     </div>
   );
 }
