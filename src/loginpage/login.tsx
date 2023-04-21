@@ -6,12 +6,12 @@ const Login = () => {
         <>
             <div className={styles.container}>
                 <div className={styles.loginForm}>
-                    <span className={styles.logo}>chAT</span>
+                    <span className={styles.logo}>Private Chat</span>
                     <span className={styles.login}>Login</span>
                     <form>
                         <input type="email" />
                         <input type="password" />
-                        <button>Login</button>
+                        <button className={styles.loginButton}>Login</button>
                     </form>
                 </div>
             </div>
