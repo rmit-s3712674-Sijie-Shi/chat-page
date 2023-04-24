@@ -31,7 +31,7 @@ form {
 }
 
 .loginButton{
-    width: 50px;
+    width: fit-content;
 }
 
 .createButton {
