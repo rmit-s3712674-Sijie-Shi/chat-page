@@ -1,5 +1,5 @@
 .container {
-    background-color: rgb(208, 248, 255);
+    background-color: rgb(233, 249, 252);
     height: 100vh;
     display: flex;
     align-items: center;
@@ -7,9 +7,10 @@
 }
 
 .loginForm {
+    background-color: rgba(241, 253, 255, 0.87);
     display: flex;
     flex-direction: column;
-    border: 0.5px solid rgb(231, 231, 231);
+    border: 0.5px solid rgb(248, 248, 248);
     padding: 150px;
     border-radius: 10px;
 }
@@ -31,4 +32,9 @@ form {
 
 .loginButton{
     width: 50px;
+}
+
+.createButton {
+    text-align: center;
+    width: fit-content;
 }

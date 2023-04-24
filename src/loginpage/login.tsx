@@ -12,6 +12,7 @@ const Login = () => {
                         <input type="email" />
                         <input type="password" />
                         <button className={styles.loginButton}>Login</button>
+                        <button className={styles.createButton}>Register</button>
                     </form>
                 </div>
             </div>
