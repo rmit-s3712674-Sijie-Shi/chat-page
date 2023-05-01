@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./register.module.css";
 
-const Register = () => {
+const Register = ({ setShow } : { setShow:any }) => {
     return(
         <>
             <div className={styles.container}>
@@ -13,6 +13,7 @@ const Register = () => {
                         <input type="password" />
                         <input type="password" />
                         <button className={styles.registerButton}>register</button>
+                        <button className={styles.registerButton} onClick={() => setShow(true)}>go to login</button>
                     </form>
                 </div>
             </div>
