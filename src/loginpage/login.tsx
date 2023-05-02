@@ -2,7 +2,9 @@ import React from "react";
 import styles from "./login.module.css";
 
 const Login = ({ setShow } : { setShow:any }) => {
-
+    const login = () => {
+        
+    }
     return(
         <>
             <div className={styles.container}>
@@ -13,7 +15,7 @@ const Login = ({ setShow } : { setShow:any }) => {
                         <input type="email" placeholder="email"/>
                         <input type="password" placeholder="password"/>
                         <div className={styles.buttonContainer}>
-                        <button className={styles.loginButton}>Login</button>
+                        <button className={styles.loginButton} onClick={}>Login</button>
                         <button className={styles.createButton} onClick={() => setShow(false)}>Register</button>
                         </div>
                     </form>
