@@ -10,10 +10,12 @@ const Login = ({ setShow } : { setShow:any }) => {
                     <span className={styles.logo}>Private Chat</span>
                     <span className={styles.login}>Login</span>
                     <form>
-                        <input type="email" />
-                        <input type="password" />
+                        <input type="email" placeholder="email"/>
+                        <input type="password" placeholder="password"/>
+                        <div className={styles.buttonContainer}>
                         <button className={styles.loginButton}>Login</button>
                         <button className={styles.createButton} onClick={() => setShow(false)}>Register</button>
+                        </div>
                     </form>
                 </div>
             </div>

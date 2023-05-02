@@ -1,18 +1,22 @@
 .container {
-    background-color: rgb(255, 255, 255);
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(#000142, #00031f);
 }
 
 .loginForm {
-    background-color: rgba(241, 253, 255, 0.87);
+    height: 250px;
+    max-height: 250px;
     display: flex;
     flex-direction: column;
-    border: 0.5px solid rgb(248, 248, 248);
+    border: 0.5px solid rgb(5, 0, 77);
     padding: 150px;
     border-radius: 10px;
+    background: linear-gradient(#1c1d4b, #2e2f7a);
+    opacity: 0.9;
+    color: rgb(193, 226, 255);
 }
 
 .logo {
@@ -30,11 +34,71 @@ form {
     gap: 15px;
 }
 
-.loginButton{
+form input {
+    background-color: transparent;
+    border-bottom: 1px solid #9ec8f7;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    outline: none;
+    color: #9ec8f7;
+    font-size: 15px;
+    padding-top: 16px;
+    height: 26px;
+}
+
+form input::placeholder {
+    color: #9ec8f7;
+    transition: color ease-in-out 0.3s;
+}
+
+form input:focus::placeholder{
+    color: transparent;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+}
+
+.loginButton {
     width: fit-content;
+    background-color: #2e2f7a;
+    box-shadow: none;
+    border: none;
+    border-radius: 8px;
+    color: #9ec8f7;
+    cursor: pointer;
+    height: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    transition: background-color ease-in-out 0.6s, color ease-in-out 0.5s;
+}
+
+.loginButton:hover {
+    background-color: #1e2081;
+    color: #e3f0ff;
+    border-radius: 5px;
 }
 
 .createButton {
     text-align: center;
     width: fit-content;
+    background-color: #2e2f7a;
+    box-shadow: none;
+    border: none;
+    border-radius: 8px;
+    color: #9ec8f7;
+    cursor: pointer;
+    height: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    transition: background-color ease-in-out 0.6s, color ease-in-out 0.5s;
+}
+
+.createButton:hover {
+    background-color: #1e2081;
+    color: #e3f0ff;
+    border-radius: 5px;
 }

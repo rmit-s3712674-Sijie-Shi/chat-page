@@ -7,13 +7,15 @@ const Register = ({ setShow } : { setShow:any }) => {
             <div className={styles.container}>
                 <div className={styles.registerForm}>
                     <span className={styles.logo}>Private Chat</span>
-                    <span className={styles.registerForm}>register</span>
+                    <span className={styles.register}>Register</span>
                     <form>
-                        <input type="email" />
-                        <input type="password" />
-                        <input type="password" />
-                        <button className={styles.registerButton}>register</button>
-                        <button className={styles.registerButton} onClick={() => setShow(true)}>go to login</button>
+                        <input type="email" placeholder="email"/>
+                        <input type="password" placeholder="password"/>
+                        <input type="password" placeholder="confirm password"/>
+                        <div className={styles.buttonContainer}>
+                        <button className={styles.createButton}>register</button>
+                        <button className={styles.loginButton} onClick={() => setShow(true)}>go to login</button>
+                        </div>
                     </form>
                 </div>
             </div>
