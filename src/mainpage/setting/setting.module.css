@@ -1,0 +1,11 @@
+.userFile{
+/* Rectangle 1 */
+
+position: absolute;
+width: 495px;
+height: 701px;
+
+background: linear-gradient(180deg, rgba(6, 0, 77, 0.8) 34.38%, #1D09FD 99.57%);
+border-radius: 30px;
+    
+}
