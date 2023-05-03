@@ -5,7 +5,7 @@ import Setting from "./setting/setting";
 
 const MainPage = () => {
     return (
-        <div>
+        <div className={styles.background}>
             <Chat/>
             <Setting/>
         </div>

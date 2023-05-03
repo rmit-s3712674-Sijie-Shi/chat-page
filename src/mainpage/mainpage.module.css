@@ -1,0 +1,9 @@
+.background {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(#000142, #00031f);
+    color: rgb(193, 226, 255);
+}
