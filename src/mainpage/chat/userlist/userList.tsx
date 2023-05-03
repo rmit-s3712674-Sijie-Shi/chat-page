@@ -4,8 +4,7 @@ import UserCard from "../usercard/userCard";
 
 const UserList = () => {
     return (
-        <div>
-            userList
+        <div className={styles.userlist}>
             <UserCard/>
         </div>
     )

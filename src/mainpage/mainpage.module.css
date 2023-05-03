@@ -4,6 +4,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(#000142, #00031f);
-    color: rgb(193, 226, 255);
+    background: linear-gradient(#dfdfdf, #ffffff);
+    color: rgb(58, 61, 63);
 }
