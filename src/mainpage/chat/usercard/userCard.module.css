@@ -1,0 +1,21 @@
+.usercard {
+    border: 1px solid #bdbdbd;
+    height: fit-content;
+    max-height: 50px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    padding: 5px;
+}
+
+.avatar {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 12px;
+}
+
+.user {
+    padding-left: 50%;
+    padding-top: 4%
+}
