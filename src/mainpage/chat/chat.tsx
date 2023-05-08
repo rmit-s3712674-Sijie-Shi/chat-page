@@ -8,8 +8,10 @@ const Chat = () => {
     return (
         <>
         <UserList/>
-        <ChatInput/>
+        <div className={styles.chatContainer}>
         <Message/>
+        <ChatInput/>
+        </div>
         </>
     )
 }
