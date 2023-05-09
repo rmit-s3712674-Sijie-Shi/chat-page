@@ -1,6 +1,7 @@
 .userlist {
     height: 60%;
     width: 15%; 
+    min-width: 300px;
     border-radius: 15px;
     background-color: #cfcfcf;
 }
