@@ -7,6 +7,11 @@
     flex-direction: row;
     margin: 5px;
     padding: 5px;
+    cursor: pointer;
+}
+
+.usercard:hover {
+    background-color:#bdbdbd;
 }
 
 .avatar {
