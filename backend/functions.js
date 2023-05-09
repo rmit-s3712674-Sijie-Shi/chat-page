@@ -9,8 +9,12 @@ export function getUser(req, res) {
 export function createUser(req, res) {
     console.log(req.body)
     const { email, password } = req.body || {}
-    data.read(email) ? res.status(400).send("Email has been used.") : data.create({ email, password })
-    res.status(201).send(`User ${email} has been successfully created.`)
+    if(data.read(email)) {
+        res.status(400).send("Email has been used.")
+    } else {
+        data.create({ email, password })
+        res.status(201).send(`User ${email} has been successfully created.`)
+    }
 }
 
 export function login(req, res) {

@@ -34,21 +34,29 @@ const Register = ({ setShow } : { setShow:any }) => {
     const [errorMessage, setErrorMessage] = useState('')
     const [user, dispatch] = useReducer(reducer, userData)
     const register = () => {
+        let reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
         setErrorMessage("")
         console.log(errorMessage)
         if(user.email === ""|| user.password ===""|| user.confirmPassword ==="") {
             setErrorMessage("lack of parameter")
         } else if (user.password !== user.confirmPassword) {
             setErrorMessage("passwords don't match")
+        } else if(user.password.length < 8) {
+            setErrorMessage("password too short")
+        } else if(!reg.test(user.email)){
+            setErrorMessage("email in invalid")
         } else {
             axios.post("http://localhost:3001/createuser", {
                 email: user.email,
                 password: user.password
             }).then((res) => {
-                console.log(res)
-                setShow(true)
+                if(res.status !== 201){
+                    setErrorMessage(res.data)
+                } else {
+                    setShow(true)
+                }
             }).catch((err) => {
-                setErrorMessage(err)
+                setErrorMessage(err.response.data)
             })
         }
     }
