@@ -2,7 +2,7 @@ import React, { useReducer, useState } from "react";
 import styles from "./register.module.css";
 import axios from "axios";
 
-const reducer = (state: {email: string, password: string, confirmPassword: string}, action: {type: string, parameter: string}) => {
+const reducer = (state: {email: string, password: string, confirmPassword?: string}, action: {type: string, parameter: string}) => {
     switch(action.type) {
         case "email":
             state.email = action.parameter;
