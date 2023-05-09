@@ -1,5 +1,8 @@
 export class Data {
-    localData = []
+    localData = [{
+        email: "a",
+        password: "1"
+    }]
 
     create = (item) => {
         this.localData.push(item)
