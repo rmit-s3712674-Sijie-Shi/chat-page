@@ -28,13 +28,13 @@
     padding-top: 10px;
 }
 
-form {
+.form {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-form input {
+.form input {
     background-color: transparent;
     border-bottom: 1px solid #9ec8f7;
     border-top: 0px;
@@ -47,12 +47,12 @@ form input {
     height: 26px;
 }
 
-form input::placeholder {
+.form input::placeholder {
     color: #9ec8f7;
     transition: color ease-in-out 0.3s;
 }
 
-form input:focus::placeholder{
+.form input:focus::placeholder{
     color: transparent;
 }
 

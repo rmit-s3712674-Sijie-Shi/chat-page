@@ -13,14 +13,14 @@ const Login = ({ setShow } : { setShow:any }) => {
                 <div className={styles.loginForm}>
                     <span className={styles.logo}>Private Chat</span>
                     <span className={styles.login}>Login</span>
-                    <form>
+                    <div className={styles.form}>
                         <input type="email" placeholder="email"/>
                         <input type="password" placeholder="password"/>
                         <div className={styles.buttonContainer}>
                         <button className={styles.loginButton} onClick={login}>Login</button>
                         <button className={styles.createButton} onClick={() => setShow(false)}>Register</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </>

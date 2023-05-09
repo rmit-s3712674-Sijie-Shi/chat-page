@@ -1,14 +1,17 @@
-import { createServer } from "http";
+import http from "http";
 
 const startServer = (app, port) => {
 
-const server = createServer(app)
+// const server = http.createServer((req, res) => {
+//     res.writeHead(200, { 'Content-Type': 'text/plain' })
+//     res.end('Hello World')
+// })
 
-server.listen(port, () => {
+app.listen(port, () => {
     console.log(`server is running on port ${port}`)
 })
 
-server.on('error', (err) => {
+app.on('error', (err) => {
     console.error(err)
 })
 }
