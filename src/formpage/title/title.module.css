@@ -1,0 +1,20 @@
+.container{
+    position: relative;
+}
+.container input {
+    background-color: #fff;
+    border: none;
+    font-size: 4rem;
+}
+
+.container input:focus {
+    border: none;
+    outline: none;
+    border-bottom: gray solid 1px;
+}
+
+.container img {
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+}

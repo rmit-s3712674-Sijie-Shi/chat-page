@@ -8,6 +8,7 @@ import {
   RouterProvider
 } from "react-router-dom";
 import MainPage from './mainpage/mainpage';
+import FormMainPage from './formpage/formMainPage';
 
 
 const router = createBrowserRouter([
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
   },
   {
     path:"/main",
-    element:<MainPage/>
+    element:<FormMainPage/>
   }
 ])
 
