@@ -12,9 +12,20 @@
     margin: 2%;
 }
 
-.delete {
+.deleteContainer {
     position: absolute;
-    right: 10%;
+    border-left: 1px black solid;
+    height: 100%;
+    right: 5%;
+    top: 0%;
+    cursor: pointer;
+}
+.deleteContainer:hover {
+    background-color: #ff9292;
+}
+
+.delete{
+    padding-top:30%;
 }
 
 .addNewTask {
