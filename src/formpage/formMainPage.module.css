@@ -21,11 +21,11 @@
 }
 
 .questionContainer {
-    border: 1px black solid;
-    border-radius: 2rem;
-    width: 90%;
+    border: 1px rgb(195, 195, 195) solid;
+    border-radius: 1rem;
+    width: 100%;
     text-align: center;
-    padding: 5%;
+    margin: 20px;
 }
 
 .bottonContainer {

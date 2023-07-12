@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useCallback, useEffect, useReducer, useState } from "react";
 import styles from "./formMainPage.module.css"
 import Title from "./title/title";
 import Question from "./questions/question";
@@ -33,11 +33,11 @@ const FormMainPage = () => {
                 {formInfo?.title ? <Title props={formInfo.title}/> : <Title props={"enter your title"}/>}
             </div>
             <div className={styles.questionContainer}>
-                {formInfo ? formInfo.questions?.map((q) => (
-                    <div key={q.id}>
-                    <Question {...q}/>
-                    </div>
-                )) : <div>Nothing here</div>}
+                {formState?.questions ? 
+                    <Question/>
+
+                : <div>Nothing here</div>}
+
             </div>
             <div className={styles.bottonContainer}>
                 buttons

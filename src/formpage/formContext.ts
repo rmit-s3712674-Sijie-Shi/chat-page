@@ -14,6 +14,13 @@ export const formData:IForm = {
     endtime:0
 }
 
+export const newQuestion: IQuestion ={
+    id: "0",
+    description:"the first question",
+    maxRate: 0,
+    minRate: 0
+}
+
 export const formReducer = (state: IForm, action:{type: string, title?: string, question?:IQuestion}): IForm => {
     switch(action.type) {
         case "changeTitle" :
@@ -23,9 +30,8 @@ export const formReducer = (state: IForm, action:{type: string, title?: string, 
             }
             return state
         case "addQuestion":
-            if(action.question) {
-                state.questions = state.questions? [...state.questions, action.question] : [action.question]
-            }
+                state.questions = state.questions? [...state.questions, newQuestion] : [newQuestion]
+            console.log(state)
             return state
         case "editQuestion":
             if(action.question) {

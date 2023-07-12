@@ -12,6 +12,7 @@ const Title = ({ props } : { props:string }) => {
 
     useEffect(() => {
         //setTitle(props)
+        console.log(props)
         ref.current!.value = props
     },[props])
 
