@@ -1,23 +1,41 @@
 .container {
-    position: relative;
+    height: 200px;
+    display: flex;
+    padding: 2%;
 }
 
 .question {
     border: 1px black solid;
     text-align: left;
-    padding-left: 10px;
-    padding-top: 10px;
-    padding-bottom: 20px;
     border-radius: 1rem;
-    margin: 2%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.detailContainer {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    border-right: 1px solid black;
+}
+
+.description {
+    border: none;
+    border-bottom: 1px black solid;
+    height: 20%;
+}
+
+.description:focus {
+    background-color: #fff;
+    border: none;
+    border-bottom: 1px black solid;
+    outline: none;
 }
 
 .deleteContainer {
-    position: absolute;
-    border-left: 1px black solid;
     height: 100%;
-    right: 5%;
-    top: 0%;
     cursor: pointer;
 }
 .deleteContainer:hover {

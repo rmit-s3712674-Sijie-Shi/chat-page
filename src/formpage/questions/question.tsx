@@ -30,14 +30,27 @@ const Question = () => {
         })
     }, [formState.questions, setFormState])
 
+    const changeDescription = useCallback((string: string, q: IQuestion) => {
+        let temp: IQuestion = {...q, description: string}
+        setFormState({ type: "editQuestion", question: temp })
+        setQuestions(prev => {
+            prev = formState.questions ? [...formState.questions] : []
+            return prev
+        })
+    }, [formState.questions, setFormState])
+
     return (
         <>
             <div>
                 {questions?.length ? questions.map((q) => (
                     <div className={styles.container} key={q.id}>
-                        <div className={styles.question}>{q.description}</div>
-                        <div className={styles.deleteContainer}>
-                            <div className={styles.delete} onClick={() => deleteTask(q)}>delete</div>
+                        <div className={styles.question}>
+                            <div className={styles.detailContainer}>
+                                <input  className={styles.description} value={q.description} onChange={(e) => changeDescription(e.target.value, q)}></input>
+                            </div>
+                            <div className={styles.deleteContainer} onClick={() => deleteTask(q)}>
+                                <div className={styles.delete}>delete</div>
+                        </div>
                         </div>
                     </div>
                 )) : <div className={styles.noTask}>No task here, please add a new one</div>}

@@ -36,14 +36,16 @@ export const formReducer = (state: IForm, action:{type: string, title?: string, 
             console.log(state)
             return state
         case "editQuestion":
-            if(action.question) {
-                state.questions ? state.questions.map((res) => {
+            if(action.question) {     
+                state.questions ? state.questions = state.questions.map((res) => {
                     if(action.question) {
-                        return res.id === action.question.id ? action.question : res
+                       res = res.id === action.question.id ? action.question : res
+                       return res
                     }
-                    return state
+                    return res
                 }) : state.questions = [action.question]
             }
+            console.log(state.questions)
             return state
             case "deleteQuestion":
                 if(action.question) {
