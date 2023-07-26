@@ -31,7 +31,7 @@ const Question = () => {
     }, [formState.questions, setFormState])
 
     const changeDescription = useCallback((string: string, q: IQuestion) => {
-        let temp: IQuestion = {...q, description: string}
+        let temp: IQuestion = { ...q, description: string }
         setFormState({ type: "editQuestion", question: temp })
         setQuestions(prev => {
             prev = formState.questions ? [...formState.questions] : []
@@ -46,11 +46,16 @@ const Question = () => {
                     <div className={styles.container} key={q.id}>
                         <div className={styles.question}>
                             <div className={styles.detailContainer}>
-                                <input  className={styles.description} value={q.description} onChange={(e) => changeDescription(e.target.value, q)}></input>
+                                <input className={styles.description} value={q.description} onChange={(e) => changeDescription(e.target.value, q)}></input>
+                                <label >Choose an option:</label>
+                                <select name="cars" id="cars">
+                                    <option value="rate">Rate</option>
+                                    <option value="text">text</option>
+                                </select>
                             </div>
                             <div className={styles.deleteContainer} onClick={() => deleteTask(q)}>
                                 <div className={styles.delete}>delete</div>
-                        </div>
+                            </div>
                         </div>
                     </div>
                 )) : <div className={styles.noTask}>No task here, please add a new one</div>}
