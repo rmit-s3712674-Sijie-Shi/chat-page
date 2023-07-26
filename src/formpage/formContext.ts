@@ -8,6 +8,8 @@ export const formData:IForm = {
     questions:[{
         id: uuidv4(),
         description:"the first question",
+        questionsType: "text",
+        response: "",
         maxRate: 0,
         minRate: 0
     }],
@@ -28,6 +30,8 @@ export const formReducer = (state: IForm, action:{type: string, title?: string, 
                 const newQuestion:IQuestion = {
                     id: uuidv4(),
                     description:"the first question",
+                    questionsType: "text",
+                    response: "",
                     maxRate: 0,
                     minRate: 0   
                 }

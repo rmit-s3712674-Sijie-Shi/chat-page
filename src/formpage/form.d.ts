@@ -5,10 +5,13 @@ export interface IForm {
     timestamp: number | undefined;
     endtime: number | undefined;
 }
+export type QuestionType = "rate" | "text";
 
 export interface IQuestion {
     id: string;
     description: string;
+    questionsType: QuestionType;
+    response: string;
     maxRate: number;
     minRate: number;
 }

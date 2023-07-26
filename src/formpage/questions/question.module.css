@@ -62,3 +62,8 @@
 .noTask {
     padding-top: 20px;
 }
+
+.select {
+    min-width: 150px;
+    max-width: 150px;
+}

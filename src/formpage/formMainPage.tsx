@@ -4,14 +4,17 @@ import Title from "./title/title";
 import Question from "./questions/question";
 import { IForm, IQuestion } from "./form";
 import {FormContext, formReducer} from "./formContext";
+import { v4 as uuidv4 } from 'uuid';
 
 const FormMainPage = () => {
     const formData:IForm = {
         id: "",
         title:"title",
         questions:[{
-            id: "0",
+            id: uuidv4(),
             description:"the first question",
+            questionsType: "text",
+            response: "",
             maxRate: 0,
             minRate: 0
         }],
@@ -49,3 +52,4 @@ const FormMainPage = () => {
 }
 
 export default FormMainPage;
+
