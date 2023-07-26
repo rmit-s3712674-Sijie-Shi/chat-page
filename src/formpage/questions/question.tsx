@@ -34,7 +34,7 @@ const Question = () => {
         })
     }, [formState.questions, setFormState])
 
-    const changeQuestionInfo = useCallback((value: string, q: IQuestion, changedType: QuestionsInfo) => {
+    const changeQuestionInfo = useCallback((value: string | number, q: IQuestion, changedType: QuestionsInfo) => {
 
         let temp: IQuestion = { ...q, [changedType]: value }
         setFormState({ type: "editQuestion", question: temp })
@@ -44,14 +44,6 @@ const Question = () => {
         })
 
     }, [formState.questions, setFormState])
-
-    // const changeSelectedType = (event: string, q:IQuestion) => {
-    //     console.log(event)
-    //     setQuestions(prev => {
-
-    //     })
-    // }
-
 
 
     return (
@@ -63,10 +55,26 @@ const Question = () => {
                             <div className={styles.detailContainer}>
                                 <input className={styles.description} value={q.description} onChange={(e) => changeQuestionInfo(e.target.value, q, "description")}></input>
                                 <label >Choose an option:</label>
-                                <select name="cars" id="cars" className={styles.select} onChange={(e) => changeQuestionInfo(e.target.value, q, "questionsType")}>
+                                <select name="cars" id="cars" className={styles.select} onChange={(e) => changeQuestionInfo(e.target.value, q, "questionsType")} value={q.questionsType}>
                                     <option value="rate">Rate</option>
-                                    <option value="text">text</option>
+                                    <option value="text">Text</option>
                                 </select>
+                                {q.questionsType === "rate" ?                                 
+                                <div> 
+                                    <div>Min Rate: 
+                                        <input type="text" value={q.minRate} onChange={(e) => changeQuestionInfo(parseInt(e.target.value), q, "minRate")}/>                                
+                                    </div>
+                                    <div>
+                                        Max Rate: 
+                                        <input type="text" value={q.maxRate} onChange={(e) => changeQuestionInfo(parseInt(e.target.value), q, "maxRate")}/>
+                                    </div>
+                                    {q.maxRate < q.minRate && <div> max rate should larger than min rate</div> }
+                                </div> 
+                                
+                                : <div>
+                                    please input the detail for the response:
+                                    <input type="text" value={q.response} onChange={(e) => changeQuestionInfo(e.target.value, q, "response")}/>
+                                </div>}
                             </div>
                             <div className={styles.deleteContainer} onClick={() => deleteTask(q)}>
                                 <div className={styles.delete}>delete</div>
