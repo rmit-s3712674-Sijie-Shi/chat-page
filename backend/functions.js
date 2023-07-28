@@ -1,25 +1,46 @@
-import { Data } from "./data.js"
+import { User } from "./data.js"
+import pkg from "jsonwebtoken";
+import bcrypt from "bcryptjs"
 
-const data = new Data()
+const secret = "gdklajgftalouiebgnvafjsalif";
 
+const { Jwt } = pkg
 export function getUser(req, res) {
-    res.status(200).json(data.list())
+    User.find()
+        .then(data => res.status(200).send(data))
+        .catch(err => res.status(422).send(err))
 }
 
 export function createUser(req, res) {
     console.log(req.body)
-    const { email, password } = req.body || {}
-    if(data.read(email)) {
-        res.status(400).send("Email has been used.")
-    } else {
-        data.create({ email, password })
-        res.status(201).send(`User ${email} has been successfully created.`)
-    }
+    const { username, password } = req.body || {}
+    User.create({
+        username: username,
+        password: password,
+    })
+      .then(data => res.status(200).send(data))
+      .catch(err => res.status(422).send(err.message))
 }
 
-export function login(req, res) {
+export async function login(req, res) {
     console.log(req.body)
-    const { email, password } = req.body || {}
-    const user = data.read(email) ? data.read(email) : {}
-    user.password === password ? res.status(201).send('login') : res.status(400).send("Wrong password.")
+    const { username, password } = req.body || {}
+    const user = await User.findOne({ username: username })
+    console.log(user)
+    if(!user) {
+        return res.status(422).send("No such user")
+    }
+    const isPasswordValid = bcrypt.compareSync(password, user.password)
+    console.log(isPasswordValid)
+    if(!isPasswordValid) {
+        return res.status(422).send("Wrong password.")
+    }
+    const token = pkg.sign({
+        id: String(user._id)
+    }, secret)
+
+    res.json({
+        user,
+        token
+    })
 }

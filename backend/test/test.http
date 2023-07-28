@@ -1,0 +1,31 @@
+@url=http://localhost:3001
+@json=Content-Type: application/json
+
+###
+
+get {{url}}
+
+###
+post {{url}}
+
+### 查询所有用户
+get {{url}}/users
+{{json}}
+### 注册
+post {{url}}/createuser
+# Content-Type: application/json
+{{json}}
+
+{
+  "username": "user2",
+  "password": "123456"
+}
+
+### 登录
+post {{url}}/login
+{{json}}
+
+{
+  "username": "user4",
+  "password": "12345"
+}
