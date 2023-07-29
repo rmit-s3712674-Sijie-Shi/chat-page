@@ -10,7 +10,6 @@ import {
 import MainPage from './mainpage/mainpage';
 import FormMainPage from './formpage/formMainPage';
 
-
 const router = createBrowserRouter([
   {
     path:"/",

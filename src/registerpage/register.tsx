@@ -47,10 +47,10 @@ const Register = ({ setShow } : { setShow:any }) => {
             setErrorMessage("email in invalid")
         } else {
             axios.post("http://localhost:3001/createuser", {
-                email: user.email,
+                username: user.email,
                 password: user.password
             }).then((res) => {
-                if(res.status !== 201){
+                if(res.status !== 200){
                     setErrorMessage(res.data)
                 } else {
                     setShow(true)
@@ -70,7 +70,7 @@ const Register = ({ setShow } : { setShow:any }) => {
                         <input type="email" placeholder="email" onChange={(e) =>{dispatch({type: "email", parameter:e.target.value})}}/>
                         <input type="password" placeholder="password" onChange={(e) =>{dispatch({type: "password", parameter:e.target.value})}}/>
                         <input type="password" placeholder="confirm password" onChange={(e) =>{dispatch({type: "confirmPassword", parameter:e.target.value})}}/>
-                        <div style={{color: "red"}}>{errorMessage}</div>
+                        <div style={{color: "red", maxWidth: "150px"}}>{errorMessage}</div>
                         <div className={styles.buttonContainer}>
                         <button className={styles.createButton} onClick={() => register()}>register</button>
                         <button className={styles.loginButton} onClick={() => setShow(true)}>go to login</button>

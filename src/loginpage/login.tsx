@@ -1,7 +1,9 @@
 import React, { useReducer } from "react";
 import styles from "./login.module.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
+import { useCookies } from 'react-cookie';
+import { IUser } from "../globleTypes/userTypes";
 
 const reducer = (state: {email: string, password: string, confirmPassword?: string}, action: {type: string, parameter: string}) => {
     switch(action.type) {
@@ -25,14 +27,24 @@ const userData = {
     password: "",
 }
 
+const getDateAfter = (days: number): Date => {
+    const now = new Date().getTime()
+    const seconds = 60*60*24*1000*days
+    return new Date(now + seconds)
+}
 const Login = ({ setShow } : { setShow:any }) => {
     const [user, dispatch] = useReducer(reducer, userData)
+    const [cookies, setCookie] = useCookies(['user']);
     const navigate = useNavigate();
     const login = () => {
         axios.post("http://localhost:3001/login", {       
-        email: user.email,
+        username: user.email,
         password: user.password
-    }).then(() => navigate("/main"))
+    }).then((res: AxiosResponse<IUser>) => {
+        console.log(res.data.user)
+        setCookie("user", res.data, { path: "/", expires: getDateAfter(30) } )
+        navigate("/main")
+    })
      .catch(err => console.error(err))
     }
     return(
