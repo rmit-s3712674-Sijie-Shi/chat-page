@@ -31,7 +31,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs"
 
-
 mongoose.connect('mongodb://127.0.0.1:27017/form-auth');
 
 const UserSchema = new mongoose.Schema({
@@ -45,5 +44,14 @@ const UserSchema = new mongoose.Schema({
     }
 })
 
+const UserFormSchema = new mongoose.Schema({
+    userId: { type: String, unique: true },
+    savedForms: { type: Array },
+    sentForms: { type: Array },
+    finishedForms: { type: Array }
+})
+
 export const User = mongoose.model("User", UserSchema);
+
+export const UserForm = mongoose.model("UserForm", UserFormSchema);
 
