@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Login from './loginpage/login';
 import Register from './registerpage/register';
 import { useCookies } from 'react-cookie';
-import FormMainPage from './formpage/formMainPage';
 import { useNavigate } from 'react-router-dom';
 
 function App() {
@@ -10,7 +9,7 @@ function App() {
   const [cookies, setCookie] = useCookies(['user']);
   const navigate = useNavigate();
   useEffect(() => {
-    cookies.user && navigate("/main")
+    cookies.user && navigate("/main", { state : cookies.user })
   })
   return (
     <div className="App">

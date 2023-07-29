@@ -43,7 +43,7 @@ const Login = ({ setShow } : { setShow:any }) => {
     }).then((res: AxiosResponse<IUser>) => {
         console.log(res.data.user)
         setCookie("user", res.data, { path: "/", expires: getDateAfter(30) } )
-        navigate("/main")
+        navigate("/main", { state: cookies.user })
     })
      .catch(err => console.error(err))
     }
