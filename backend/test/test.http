@@ -27,5 +27,9 @@ post {{url}}/login
 
 {
   "username": "user4",
-  "password": "12345"
+  "password": "123456"
 }
+
+###
+get {{url}}/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzMzZjY2ZTE3ZjEyYzI4OWNmZWEwYSIsImlhdCI6MTY5MDYwMjc3M30.vRg5VTOTeqZ-7BVeGJOkNg6UQ6WCeVt2e3clh2P0fqA
