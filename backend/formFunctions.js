@@ -95,3 +95,9 @@ export function createForm(req, res) {
     .then(data => res.send(data))
     .catch(err  => res.status(422).send(err.message))
 }
+
+
+// db.stores.updateMany(
+//     { _id: 1 },
+//     { $pull: { fruits: { $in: [ "apples", "oranges" ] }, vegetables: "carrots" } }
+// )
