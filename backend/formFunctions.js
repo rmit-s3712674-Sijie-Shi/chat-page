@@ -78,24 +78,23 @@
 import { UserForm } from "./data.js";
 
 export async function getUserForms(req, res) {
-    const { id } = req.body
-    const result = await UserForm.findOne({ userId: id })
+  const { id } = req.body;
+  const result = await UserForm.findOne({ userId: id });
 
-    res.send(result)
+  res.send(result);
 }
 
 export function createForm(req, res) {
-    const { id } = req.body
-    UserForm.create({
-        userId: id,
-        savedForms: [],
-        sentForms: [],
-        finishedForms: []
-    })
-    .then(data => res.send(data))
-    .catch(err  => res.status(422).send(err.message))
+  const { id } = req.body;
+  UserForm.insertOne({
+    userId: id,
+    savedForms: [],
+    sentForms: [],
+    finishedForms: [],
+  })
+    .then((data) => res.send(data))
+    .catch((err) => res.status(422).send(err.message));
 }
-
 
 // db.stores.updateMany(
 //     { _id: 1 },

@@ -5,6 +5,7 @@ import Question from "./questions/question";
 import { IForm, IQuestion } from "./form";
 import {FormContext, formReducer} from "./formContext";
 import { v4 as uuidv4 } from 'uuid';
+import { useLocation  } from "react-router-dom";
 
 const FormMainPage = () => {
     const formData:IForm = {
@@ -24,8 +25,10 @@ const FormMainPage = () => {
 
     const [formState, setFormState] = useReducer(formReducer, formData)
     const [formInfo, setFormInfo] = useState<IForm>()
+    const location = useLocation()
     useEffect(() => {
         setFormInfo(formState);
+        console.log(location.state)
     }, [formState])
 
     return(
