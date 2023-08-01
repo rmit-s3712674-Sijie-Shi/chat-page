@@ -52,6 +52,37 @@ const UserFormSchema = new mongoose.Schema({
   finishedForms: { type: Array },
 });
 
+const savedForms = new mongoose.Schema({
+  formId: { type: String, unique: true},
+  userId: { type: String },
+  title: { type: String },
+  questions: { type: Array },
+  timestamp: { type: String },
+});
+
+const sentForms = new mongoose.Schema({
+  formId: { type: String, unique: true},
+  userId: { type: String },
+  responsorId: { type: [String] },
+  title: { type: String },
+  questions: { type: Array },
+  timestamp: { type: String },
+  endtime: { type: String},
+});
+
+const formCreated = new mongoose.Schema({
+  userId: { type: String, unique: true },
+  savedForms: { type: [String] },
+  sentForms: { type: [String] },
+});
+
+
+export const FormCreated = mongoose.model("FormCreated", formCreated);
+
+export const SavedForm = mongoose.model("SavedForm", savedForms);
+
+export const SentForm = mongoose.model("SentForm", sentForms);
+
 export const User = mongoose.model("User", UserSchema);
 
 export const UserForm = mongoose.model("UserForm", UserFormSchema);

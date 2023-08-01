@@ -8,7 +8,7 @@ import {
   getUserProfile,
   auth,
 } from "./functions.js";
-import { getUserForms, createForm } from "./formFunctions.js";
+import { readUserForms, createForm, updateForm } from "./formFunctions.js";
 
 const app = express();
 app.use(cors());
@@ -19,8 +19,9 @@ app.post("/createuser", createUser);
 app.get("/users", getUser);
 app.get("/profile", auth, getUserProfile);
 
-app.post("/getuserforms", getUserForms);
+app.post("/getuserforms", readUserForms);
 app.post("/createform", createForm);
+app.post("/updateForm", updateForm);
 // app.post("/updateform", updateForm)
 // app.post("/getsingleform", getSingleForm)
 

@@ -17,7 +17,7 @@ post {{url}}/createuser
 {{json}}
 
 {
-  "username": "rikusrocks2@gmail.com",
+  "username": "rikusrocks3@gmail.com",
   "password": "12345678"
 }
 
@@ -41,7 +41,21 @@ post {{url}}/createform
 {{json}}
 
 {
-  "id" : "64c33fff0cb373a1fe8acea3"
+  "id" : "64c8ae2b08a37cf784c10067",
+  "form" : {
+    "formId": "64c8ae2b08a37cf784c10067f1",
+    "title":"title",
+    "questions":[{
+        "id": "64c8ae2b08a37cf784c10067q1",
+        "description":"the first question",
+        "questionsType": "text",
+        "response": "",
+        "maxRate": 0,
+        "minRate": 0
+    }],
+    "timestamp": 0,
+    "endtime":0
+}
 }
 
 ### getForm
@@ -49,5 +63,32 @@ post {{url}}/getuserforms
 {{json}}
 
 {
-  "id" : "64c33fff0cb373a1fe8acea3"
+  "id" : "64c8a9d3c04db2b36ed6f849"
+}
+
+### updateForm
+post {{url}}/updateForm
+{{json}}
+
+{
+    "formId": "64c8ae2b08a37cf784c10067f1",
+    "title":"title",
+    "questions":[{
+        "id": "64c8ae2b08a37cf784c10067q1",
+        "description":"the first question",
+        "questionsType": "text",
+        "response": "",
+        "maxRate": 0,
+        "minRate": 0
+    },
+    {
+        "id": "64c8ae2b08a37cf784c10067q2",
+        "description":"the second question",
+        "questionsType": "rate",
+        "response": "",
+        "maxRate": 0,
+        "minRate": 0
+    }
+    ],
+    "timestamp": 0
 }

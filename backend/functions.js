@@ -2,7 +2,7 @@ import { User } from "./data.js";
 import pkg from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import * as fs from "node:fs";
-import { UserForm } from "./data.js";
+import { FormCreated } from "./data.js";
 
 export function getUser(req, res) {
   User.find()
@@ -18,11 +18,10 @@ export function createUser(req, res) {
     password: password,
   })
     .then(async (data) => {
-      await UserForm.create({
+      await FormCreated.create({
         userId: data._id.toString(),
         savedForms: [],
         sentForms: [],
-        finishedForms: [],
       });
       res.status(200).send(data);
     })
