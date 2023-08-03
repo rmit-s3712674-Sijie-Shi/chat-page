@@ -26,13 +26,13 @@ post {{url}}/login
 {{json}}
 
 {
-  "username": "user4",
-  "password": "123456"
+  "username": "rikusrocks2@gmail.com",
+  "password": "12345678"
 }
 
 ###
 get {{url}}/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzMzZjY2ZTE3ZjEyYzI4OWNmZWEwYSIsImlhdCI6MTY5MDYwMjc3M30.vRg5VTOTeqZ-7BVeGJOkNg6UQ6WCeVt2e3clh2P0fqA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzhhZDRjMDhhMzdjZjc4NGMxMDA1OSIsImlhdCI6MTY5MTAzODk0MCwiZXhwIjoxNjkxMDM4OTYwfQ.10q_Ji5EYr0Mqus_BwPIGa8bb4N1EUjReS_zOyx6TBw
 
 
 ### createForm
