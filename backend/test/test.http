@@ -92,3 +92,13 @@ post {{url}}/updateForm
     ],
     "timestamp": 0
 }
+
+### deleteForm
+post {{url}}/deleteForm
+{{json}}
+
+{
+  "userId" : "64c8ae2b08a37cf784c10067",
+  "formId" : "64c8ae2b08a37cf784c10067f1",
+  "status" : "savedForms"
+}
