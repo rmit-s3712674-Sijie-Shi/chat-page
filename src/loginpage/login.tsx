@@ -42,6 +42,7 @@ const Login = ({ setShow } : { setShow:any }) => {
         password: user.password
     }).then((res: AxiosResponse<IUser>) => {
         console.log(res.data.user)
+        localStorage.setItem(res.data.user._id, res.data.token)
         setCookie("user", res.data, { path: "/", expires: getDateAfter(30) } )
         navigate("/main", { state: cookies.user })
     })

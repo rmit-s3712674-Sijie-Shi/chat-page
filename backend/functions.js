@@ -47,7 +47,9 @@ export async function login(req, res) {
     {
       id: String(user._id),
     },
-    secret
+    secret, {
+      expiresIn: "30d"
+    }
   );
 
   res.json({
@@ -64,7 +66,26 @@ export const auth = async (req, res, next) => {
   const rawJson = fs.readFileSync("./environment/secret.json");
   const { secret } = JSON.parse(rawJson);
   const rawToken = String(req.headers.authorization).split(" ").pop();
-  const { id } = pkg.verify(rawToken, secret);
-  req.user = id;
-  next();
+  pkg.verify(rawToken, secret, function (err, decoded) {
+    if (err) {
+      res.status(403).send("Wrong credential.");
+    } else {
+      req.user = decoded.id;
+      next();
+    }
+  });
 };
+
+export function checkUserAuth(req, res, next) {
+  const rawJson = fs.readFileSync("./environment/secret.json");
+  const { secret } = JSON.parse(rawJson);
+  const rawToken = String(req.headers.authorization).split(" ").pop();
+  pkg.verify(rawToken, secret, function (err, decoded) {
+    if (err) {
+      res.status(403).send("Wrong credential.");
+    } else {
+      req.user = decoded.id;
+      next();
+    }
+  });
+}
