@@ -1,16 +1,11 @@
 @url=http://localhost:3001
 @json=Content-Type: application/json
-
-###
-
-get {{url}}
-
-###
-post {{url}}
+@token=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzhhZDRjMDhhMzdjZjc4NGMxMDA1OSIsImlhdCI6MTY5MTExMTQwOCwiZXhwIjoxNjkzNzAzNDA4fQ.JnDzARUL11R3hWY08TvbUjQ5gtK8M4CKF_slSCf-wZ8
 
 ### 查询所有用户
 get {{url}}/users
 {{json}}
+
 ### 注册
 post {{url}}/createuser
 # Content-Type: application/json
@@ -32,16 +27,15 @@ post {{url}}/login
 
 ###
 get {{url}}/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzhhZDRjMDhhMzdjZjc4NGMxMDA1OSIsImlhdCI6MTY5MTAzODk0MCwiZXhwIjoxNjkxMDM4OTYwfQ.10q_Ji5EYr0Mqus_BwPIGa8bb4N1EUjReS_zOyx6TBw
-
+{{token}}
 
 ### createForm
 
 post {{url}}/createform
 {{json}}
+{{token}}
 
 {
-  "id" : "64c8ae2b08a37cf784c10067",
   "form" : {
     "formId": "64c8ae2b08a37cf784c10067f1",
     "title":"title",
@@ -59,12 +53,9 @@ post {{url}}/createform
 }
 
 ### getForm
-post {{url}}/getuserforms
+get {{url}}/getuserforms
 {{json}}
-
-{
-  "id" : "64c8a9d3c04db2b36ed6f849"
-}
+{{token}}
 
 ### updateForm
 post {{url}}/updateForm

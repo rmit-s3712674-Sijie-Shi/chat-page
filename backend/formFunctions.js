@@ -1,17 +1,18 @@
 import { UserForm, FormCreated, SavedForm, SentForm } from "./data.js";
 
 export async function createForm(req, res) {
-  const { id, form } = req.body;
+  const { form } = req.body;
+  const { userId } = req;
   try {
     await FormCreated.findOneAndUpdate(
       {
-        userId: id,
+        userId: userId,
       },
       { $push: { savedForms: form.formId } }
     );
     console.log(form);
     const result = await SavedForm.create({
-      userId: id,
+      userId: userId,
       formId: form.formId,
       title: form.title,
       questions: form.questions,
@@ -25,8 +26,8 @@ export async function createForm(req, res) {
 }
 
 export async function readUserForms(req, res) {
-  const { id } = req.body;
-  const result = await FormCreated.findOne({ userId: id });
+  const { userId } = req;
+  const result = await FormCreated.findOne({ userId: userId });
   res.send(result);
 }
 
@@ -50,7 +51,8 @@ export async function updateForm(req, res) {
 }
 
 export async function deleteSavedForm(req, res) {
-  const { userId, formId } = req.body;
+  const { formId } = req.body;
+  const { userId } = req;
   try {
     await SavedForm.findOneAndDelete({ formId: formId });
     const result = await FormCreated.findOneAndUpdate(
@@ -65,7 +67,8 @@ export async function deleteSavedForm(req, res) {
 }
 
 export async function deleteSentForm(req, res) {
-  const { userId, formId } = req.body;
+  const { formId } = req.body;
+  const { userId } = req;
   try {
     await SavedForm.findOneAndDelete({ formId: formId });
     const result = await FormCreated.findOneAndUpdate(

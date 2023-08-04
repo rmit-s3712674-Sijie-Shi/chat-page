@@ -19,11 +19,11 @@ app.post("/createuser", createUser);
 app.get("/users", getUser);
 app.get("/profile", auth, getUserProfile);
 
-app.post("/getuserforms", readUserForms);
-app.post("/createform", createForm);
-app.post("/updateForm", updateForm);
-app.post("/deleteSavedForm", deleteSavedForm);
-app.post("/deleteSentForm", deleteSentForm);
+app.get("/getuserforms",auth, readUserForms);
+app.post("/createform",auth, createForm);
+app.post("/updateForm",auth, updateForm);
+app.post("/deleteSavedForm",auth, deleteSavedForm);
+app.post("/deleteSentForm",auth, deleteSentForm);
 // app.post("/getsingleform", getSingleForm)
 
 startServer(app, 3001);

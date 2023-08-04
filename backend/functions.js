@@ -59,7 +59,7 @@ export async function login(req, res) {
 }
 
 export async function getUserProfile(req, res) {
-  res.send(req.user);
+  res.send(req.userId);
 }
 
 export const auth = async (req, res, next) => {
@@ -69,8 +69,10 @@ export const auth = async (req, res, next) => {
   pkg.verify(rawToken, secret, function (err, decoded) {
     if (err) {
       res.status(403).send("Wrong credential.");
-    } else {
-      req.user = decoded.id;
+    }    
+    else {
+      console.log(decoded.id)
+      req.userId = decoded.id;
       next();
     }
   });
