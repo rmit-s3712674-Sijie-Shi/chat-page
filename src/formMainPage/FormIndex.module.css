@@ -1,0 +1,78 @@
+.container {
+    width: 100vw;
+    height: 60vh;
+    display: flex;
+    flex-direction: row;
+    gap: 400px;
+    justify-content: center;
+    padding-top: 2%;
+}
+
+.createForm {
+    text-align: center;
+}
+
+.createButton {
+    background-color: #fff;
+    border: 0.3px solid rgb(219, 219, 219);
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.createButton:hover {
+    background-color: rgb(201, 231, 251);
+}
+
+.createButton span {
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+.createButton span:after {
+    content: '\002b';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+.createButton:hover span {
+    padding-right: 15px;
+  }
+  
+.createButton:hover span:after {
+    opacity: 1;
+    right: -5px;
+  }
+
+.saved {
+ text-align: center;
+ display: flex;
+ flex-direction: column;
+ gap: 10px
+}
+
+.title{
+    font-size: xx-large;
+    padding-bottom: 20px;
+}
+
+.mainTitle {
+    font-size: 100px;
+    text-align: center;
+    padding-top: 5%;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+

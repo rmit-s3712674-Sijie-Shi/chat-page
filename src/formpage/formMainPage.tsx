@@ -7,7 +7,7 @@ import {FormContext, formReducer} from "./formContext";
 import { v4 as uuidv4 } from 'uuid';
 import { useLocation  } from "react-router-dom";
 
-const FormMainPage = () => {
+const FormMainPage = ({handleClose} : {handleClose:any}) => {
     const formData:IForm = {
         id: "",
         title:"title",
@@ -35,6 +35,9 @@ const FormMainPage = () => {
         <>
         <FormContext.Provider value={{ formState, setFormState }}>
         <div className={styles.container}>
+        <div className={styles.bottonContainer}>
+                <button onClick={handleClose}>handleClose</button>
+            </div>
             <div className={styles.titleContainer}>
                 {formInfo?.title ? <Title props={formInfo.title}/> : <Title props={"enter your title"}/>}
             </div>
@@ -44,9 +47,6 @@ const FormMainPage = () => {
 
                 : <div>Nothing here</div>}
 
-            </div>
-            <div className={styles.bottonContainer}>
-                buttons
             </div>
         </div>
         </FormContext.Provider>

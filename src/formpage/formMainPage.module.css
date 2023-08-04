@@ -1,15 +1,20 @@
 .container {
+    position: fixed;
+  top: 0;
+  left: 0;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 100hv;
+    height: fit-content;
+    width: 50vw;
     align-items: center;
     /* justify-content: center; */
     border: 1px black dotted;
     border-radius: 2rem;
     margin-top: 3rem;
-    margin-left: 20%;
+    margin-left: 25%;
     margin-right: 20%;
+    z-index: 999;
+    background-color: #fff;
 }
 
 .titleContainer {

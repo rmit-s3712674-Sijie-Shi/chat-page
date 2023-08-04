@@ -27,8 +27,13 @@ export async function createForm(req, res) {
 
 export async function readUserForms(req, res) {
   const { userId } = req;
-  const result = await FormCreated.findOne({ userId: userId });
-  res.send(result);
+  //const userInfo = await FormCreated.findOne({ userId: userId });
+  const savedForms = await SavedForm.find({ userId: userId });
+  const sentForms = await SentForm.find({ userId: userId });
+  res.send({
+    savedForms,
+    sentForms
+  });
 }
 
 export async function updateForm(req, res) {
