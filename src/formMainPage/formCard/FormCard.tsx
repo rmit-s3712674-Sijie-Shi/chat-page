@@ -57,7 +57,7 @@ const FormCard = ({ form, handleOpen }: { form: IForm, handleOpen: any }) => {
         onMouseMove={handleMouseMove}
       >
         <div className={styles.cardContainer}>
-          <div className={styles.formTitle}>Title: {form.title}</div>
+          <div className={styles.formTitle}>{form.title}</div>
           <div className={styles.lastEdit}>last edit: {(
                 form.timestamp && trimDate(form.timestamp)
             )}</div>
