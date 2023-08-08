@@ -44,7 +44,7 @@ export async function updateForm(req, res) {
       $set: {
         questions: questions,
         title: title,
-        timestamp: new Date(),
+        timestamp: new Date().getTime(),
       },
     },
     { new: true }

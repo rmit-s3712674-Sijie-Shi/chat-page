@@ -3,7 +3,7 @@ export interface IForm {
     formId?: string;
     title: string;
     questions: IQuestion[]| null;
-    timestamp: number | undefined;
+    timestamp: number  | undefined;
     endtime?: number | undefined;
 }
 export type QuestionType = "rate" | "text";
