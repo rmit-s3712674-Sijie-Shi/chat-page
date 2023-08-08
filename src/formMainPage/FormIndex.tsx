@@ -9,6 +9,22 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import FormMainPage from "../formpage/formMainPage";
 import { selectFormReducer, selectedFormContext, selectedFormState } from "../formpage/formContext";
+import { v4 as uuidv4 } from 'uuid';
+
+const formData:IForm = {
+  id: "",
+  title:"title",
+  questions:[{
+      id: uuidv4(),
+      description:"the first question",
+      questionsType: "text",
+      response: "",
+      maxRate: 0,
+      minRate: 0
+  }],
+  timestamp: 0,
+  endtime:0
+}
 
 const FormIndex = () => {
   const user: IUser = useLocation().state;
@@ -16,7 +32,7 @@ const FormIndex = () => {
     savedForms:[],
     sentForms:[]
   });
-  const [formSelected, setFormSelected] = useState<IForm>();
+  const [formSelected, setFormSelected] = useState<IForm>(formData);
   const [error, setError] = useState();
   const [selectedForm, setSelectedForm] = useReducer(selectFormReducer, selectedFormState)
 

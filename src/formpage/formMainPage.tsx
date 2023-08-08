@@ -7,7 +7,7 @@ import {FormContext, formReducer} from "./formContext";
 import { v4 as uuidv4 } from 'uuid';
 import { useLocation  } from "react-router-dom";
 
-const FormMainPage = ({ handleClose, form } : { handleClose: any, form: IForm | undefined }) => {
+const FormMainPage = ({ handleClose, form } : { handleClose: any, form: IForm }) => {
     const formData:IForm = {
         id: "",
         title:"title",
@@ -23,7 +23,17 @@ const FormMainPage = ({ handleClose, form } : { handleClose: any, form: IForm | 
         endtime:0
     }
 
-    const [formState, setFormState] = useReducer(formReducer, formData)
+    // const formStateReducer = (state: IForm, action: { type: string, param: string | number | IQuestion}) => {
+    //     switch(action.type) {
+    //         case "title" :
+    //             state.title = typeof action.param === "string" ? action.param : state.title
+    //             return state
+    //         case "description" : 
+
+    //     }
+    // }
+
+    const [formState, setFormState] = useReducer(formReducer, form)
     const [formInfo, setFormInfo] = useState<IForm>()
     const location = useLocation()
     useEffect(() => {
