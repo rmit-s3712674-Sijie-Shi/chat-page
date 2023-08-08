@@ -23,3 +23,8 @@ let arr = ["1", "2", "3"] as const;
 type roles = typeof arr
 
 type rolearr = roles[num]
+
+export interface ISelectedForm {
+    formName: string,
+    formStatus: string
+}

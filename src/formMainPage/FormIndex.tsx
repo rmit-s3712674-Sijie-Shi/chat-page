@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 import { IUser } from "../globleTypes/userTypes";
 import { useLocation } from "react-router-dom";
 import { getUserForms } from "../httpRequests/formRequests";
@@ -8,6 +8,7 @@ import styles from "./FormIndex.module.css";
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import FormMainPage from "../formpage/formMainPage";
+import { selectFormReducer, selectedFormContext, selectedFormState } from "../formpage/formContext";
 
 const FormIndex = () => {
   const user: IUser = useLocation().state;
@@ -15,17 +16,24 @@ const FormIndex = () => {
     savedForms:[],
     sentForms:[]
   });
+  const [formSelected, setFormSelected] = useState<IForm>();
   const [error, setError] = useState();
+  const [selectedForm, setSelectedForm] = useReducer(selectFormReducer, selectedFormState)
+
   useEffect(() => {
     getUserForms(user.user._id)
       .then((res) => setFormState(res))
       .catch((err) => setError(err));
   },[]);
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = (form: IForm) => {
+    setOpen(true);
+    setFormSelected(form);
+  }
   const handleClose = () => setOpen(false);
   return (
     <>
+    <selectedFormContext.Provider value={{selectedForm, setSelectedForm}}>
     <div className={styles.header}>
       <div className={styles.mainTitle}>Welcome</div>
       <div className={styles.createForm}>
@@ -36,7 +44,7 @@ const FormIndex = () => {
         <div className={styles.saved}>
           <div className={styles.title}>saved</div>
         {formState?.savedForms.map((form: IForm) => (
-          <FormCard form={form} handleOpen={handleOpen}/>
+          <FormCard form={form} handleOpen={handleOpen} />
         ))}
         </div>
         <div className={styles.saved}>
@@ -46,7 +54,8 @@ const FormIndex = () => {
         ))}
         </div>
       </div>
-          {open && <FormMainPage handleClose={handleClose}/>}
+          {open && <FormMainPage handleClose={handleClose} form={formSelected}/>}
+          </selectedFormContext.Provider>
     </>
   );
 };

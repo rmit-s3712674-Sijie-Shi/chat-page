@@ -7,7 +7,7 @@ import {FormContext, formReducer} from "./formContext";
 import { v4 as uuidv4 } from 'uuid';
 import { useLocation  } from "react-router-dom";
 
-const FormMainPage = ({handleClose} : {handleClose:any}) => {
+const FormMainPage = ({ handleClose, form } : { handleClose: any, form: IForm | undefined }) => {
     const formData:IForm = {
         id: "",
         title:"title",
@@ -27,8 +27,9 @@ const FormMainPage = ({handleClose} : {handleClose:any}) => {
     const [formInfo, setFormInfo] = useState<IForm>()
     const location = useLocation()
     useEffect(() => {
-        setFormInfo(formState);
+        setFormInfo(form);
         console.log(location.state)
+        console.log(form)
     }, [formState])
 
     return(
@@ -42,7 +43,7 @@ const FormMainPage = ({handleClose} : {handleClose:any}) => {
                 {formInfo?.title ? <Title props={formInfo.title}/> : <Title props={"enter your title"}/>}
             </div>
             <div className={styles.questionContainer}>
-                {formState?.questions ? 
+                {formInfo?.questions ? 
                     <Question/>
 
                 : <div>Nothing here</div>}

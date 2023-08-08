@@ -1,5 +1,5 @@
 import React, { Dispatch } from "react";
-import { IForm, IQuestion } from "./form";
+import { IForm, IQuestion, ISelectedForm } from "./form";
 import { v4 as uuidv4 } from 'uuid';
 
 export const formData:IForm = {
@@ -78,3 +78,36 @@ export const FormContext = React.createContext<FormReducerProps>(
     }
 );
 
+
+
+export const selectedFormState: ISelectedForm = {
+    formName: '',
+    formStatus: ''
+}
+
+export interface SelectFormReducerProps {
+    selectedForm: ISelectedForm
+    setSelectedForm: Dispatch<ISelectedForm>
+}
+
+export const selectedFormContext = React.createContext<SelectFormReducerProps>({
+    selectedForm: selectedFormState,
+    setSelectedForm: () =>{
+        throw new Error("undefined setFormState")
+    }
+})
+
+export const selectFormReducer = (state: ISelectedForm, action: ISelectedForm) => {
+    switch(action.formStatus) {
+        case "saved" :
+            state.formName = action.formName
+            state.formStatus = "saved"
+            return state
+        case "sent" : 
+            state.formName = action.formName
+            state.formStatus = action.formStatus
+            return state 
+        default : 
+            return state 
+    }
+}
