@@ -63,7 +63,8 @@ const FormMainPage = ({
       <FormContext.Provider value={{ formState, setFormState }}>
         <div className={styles.container}>
           <div className={styles.bottonContainer}>
-            <button onClick={updateFormInfo}>handleClose</button>
+            <button onClick={() => handleClose()}>close</button>
+            <button onClick={updateFormInfo}>update</button>
           </div>
           <div className={styles.titleContainer}>
             {formInfo?.title ? (

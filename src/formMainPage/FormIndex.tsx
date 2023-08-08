@@ -14,6 +14,18 @@ import {
   selectedFormState,
 } from "../formpage/formContext";
 import { v4 as uuidv4 } from "uuid";
+import { Box } from "@mui/material";
+const style = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 const formData: IForm = {
   id: "",
@@ -90,7 +102,10 @@ const FormIndex = () => {
             ))}
           </div>
         </div>
-        {open && <FormMainPage handleClose={handleClose} form={formSelected} />}
+        {/* {open && <FormMainPage handleClose={handleClose} form={formSelected} />} */}
+        <Modal open={open} onClose={handleClose}>
+          <FormMainPage handleClose={handleClose} form={formSelected} />
+        </Modal>
       </selectedFormContext.Provider>
     </>
   );
