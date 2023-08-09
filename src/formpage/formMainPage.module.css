@@ -1,41 +1,40 @@
 .container {
-    position: fixed;
+  position: fixed;
   top: 0;
   left: 0;
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-    width: 50vw;
-    align-items: center;
-    /* justify-content: center; */
-    border: 1px black dotted;
-    border-radius: 2rem;
-    margin-top: 3rem;
-    margin-left: 25%;
-    margin-right: 20%;
-    z-index: 999;
-    background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: 40vw;
+  align-items: center;
+  /* justify-content: center; */
+  border: 1px black dotted;
+  border-radius: 15px;
+  margin-top: 10%;
+  margin-left: 25%;
+  margin-right: 20%;
+  z-index: 999;
+  background-color: #fff;
 }
 
 .titleContainer {
-    border: 1px black solid;
-    border-radius: 2rem;
-    width: 90%;
-    text-align: center;
-    padding: 5%;
+  border: none;
+  width: 90%;
+  text-align: left;
+  padding: 2%;
 }
 
 .questionContainer {
-    border: 1px rgb(195, 195, 195) solid;
-    border-radius: 1rem;
-    width: 100%;
-    margin: 20px;
+  border: 1px rgb(195, 195, 195) solid;
+  border-radius: 1rem;
+  width: 100%;
+  margin: 20px;
 }
 
 .bottonContainer {
-    border: 1px black solid;
-    border-radius: 2rem;
-    width: 90%;
-    text-align: center;
-    padding: 5%;
+  border: 1px black solid;
+  border-radius: 2rem;
+  width: 90%;
+  text-align: center;
+  padding: 5%;
 }

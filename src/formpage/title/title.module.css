@@ -4,7 +4,9 @@
 .container input {
     background-color: #fff;
     border: none;
-    font-size: 4rem;
+    font-size: 2rem;
+    width: 100%;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .container input:focus {

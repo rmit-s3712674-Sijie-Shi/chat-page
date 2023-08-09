@@ -92,13 +92,13 @@ const FormIndex = () => {
           <div className={styles.saved}>
             <div className={styles.title}>saved</div>
             {formState?.savedForms.map((form: IForm) => (
-              <FormCard form={form} handleOpen={handleOpen} />
+              <FormCard key={form.id} form={form} handleOpen={handleOpen} />
             ))}
           </div>
           <div className={styles.saved}>
             <div className={styles.title}>sent</div>
             {formState?.savedForms.map((form: IForm) => (
-              <FormCard form={form} handleOpen={handleOpen} />
+              <FormCard key={form.id} form={form} handleOpen={handleOpen} />
             ))}
           </div>
         </div>

@@ -16,13 +16,13 @@ const Title = ({ props } : { props:string }) => {
         ref.current!.value = props
     },[props])
 
-    const edit = () => {
-        setInputDisable((prev) => !prev)
-        setTimeout(() => {
-            ref.current?.focus()
-        }, 0)
-        changeTitle(ref.current?.value)
-    }
+    // const edit = () => {
+    //     setInputDisable((prev) => !prev)
+    //     setTimeout(() => {
+    //         ref.current?.focus()
+    //     }, 0)
+    //     changeTitle(ref.current?.value)
+    // }
 
     const { setFormState } = useContext(FormContext)
 
@@ -32,8 +32,9 @@ const Title = ({ props } : { props:string }) => {
 
     return(
         <div className={styles.container}>
-            <input ref={ref} disabled={inputDisable}></input>
-            {inputDisable ? <img src="./edit.png" alt="edit" onClick={edit}/> : <img src="./save.png" alt="save" onClick={edit}></img>}
+            change your title:
+            <input ref={ref} onChange={() => changeTitle(ref.current?.value)} placeholder="Title"></input>
+            {/* {inputDisable ? <img src="./edit.png" alt="edit" onClick={edit}/> : <img src="./save.png" alt="save" onClick={edit}></img>} */}
         </div>
         
     )

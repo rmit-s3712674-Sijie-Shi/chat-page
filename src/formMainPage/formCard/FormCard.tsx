@@ -55,6 +55,7 @@ const FormCard = ({ form, handleOpen }: { form: IForm, handleOpen: any }) => {
       <div
         className={styles.mainContainer}
         onMouseMove={handleMouseMove}
+        key={form.id}
       >
         <div className={styles.cardContainer}>
           <div className={styles.formTitle}>{form.title}</div>
