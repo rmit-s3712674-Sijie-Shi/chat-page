@@ -1,13 +1,79 @@
+.questionCardContainer {
+    padding-top: 10px;
+    width: 100%;
+}
+
+.questionMenu {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    gap: 10px;
+    padding-left: 5px;
+    
+}
+
+.menuButton {
+    background-color: #fff;
+    border: 0.3px solid rgb(219, 219, 219);
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+    height: 40px;
+    max-height: 40px;
+    min-height: 40px;
+    width: 75px;
+    max-width: 75px;
+    min-width: 75px;
+}
+
+.menuButton:hover {
+    background-color: rgb(201, 231, 251);
+}
+
+.buttonContainer span {
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    font-family: 'Courier New', Courier, monospace;
+}
+  
+.buttonContainer span:after {
+    content: '\0078';
+    position: absolute;
+    opacity: 0;
+    transition: 0.5s;
+    cursor: pointer;
+    top: -30px;
+    left: -3px;
+}
+
+.buttonContainer:hover span:after {
+    opacity: 1;
+}
+  
+.menuButton:hover span {
+    padding-right: 1px;
+  }
+  
+.menuButton:hover span:after {
+    opacity: 1;
+    right: -18px;
+  }
+
 .container {
     height: 200px;
     display: flex;
-    padding: 2%;
+    padding: 5%;
 }
 
 .question {
-    border: 1px black solid;
+    border: 1px black dotted;
     text-align: left;
-    border-radius: 1rem;
+    border-radius: 8px;
     height: 100%;
     width: 100%;
     display: flex;
@@ -17,7 +83,6 @@
 .detailContainer {
     display: flex;
     flex-direction: column;
-    width: 80%;
     border-right: 1px solid black;
 }
 
@@ -25,6 +90,7 @@
     border: none;
     border-bottom: 1px black solid;
     height: 20%;
+    padding-left: 12px;
 }
 
 .description:focus {

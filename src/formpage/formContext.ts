@@ -7,7 +7,7 @@ export const formData:IForm = {
     title:"title",
     questions:[{
         id: uuidv4(),
-        description:"the first question",
+        description: `input your question`,
         questionsType: "text",
         response: "",
         maxRate: 0,
@@ -29,7 +29,7 @@ export const formReducer = (state: IForm, action:{type: string, title?: string, 
             if(state.questions) {
                 const newQuestion:IQuestion = {
                     id: uuidv4(),
-                    description:"the first question",
+                    description: `${Math.random() * 10}`,
                     questionsType: "text",
                     response: "",
                     maxRate: 0,

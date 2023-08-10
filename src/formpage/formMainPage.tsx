@@ -16,22 +16,22 @@ const FormMainPage = ({
   handleClose: any;
   form: IForm;
 }) => {
-  const formData: IForm = {
-    id: "",
-    title: "title",
-    questions: [
-      {
-        id: uuidv4(),
-        description: "the first question",
-        questionsType: "text",
-        response: "",
-        maxRate: 0,
-        minRate: 0,
-      },
-    ],
-    timestamp: 0,
-    endtime: 0,
-  };
+  // const formData: IForm = {
+  //   id: "",
+  //   title: "title",
+  //   questions: [
+  //     {
+  //       id: uuidv4(),
+  //       description: "the first question",
+  //       questionsType: "text",
+  //       response: "",
+  //       maxRate: 0,
+  //       minRate: 0,
+  //     },
+  //   ],
+  //   timestamp: 0,
+  //   endtime: 0,
+  // };
 
   // const formStateReducer = (state: IForm, action: { type: string, param: string | number | IQuestion}) => {
   //     switch(action.type) {
@@ -62,10 +62,6 @@ const FormMainPage = ({
     <>
       <FormContext.Provider value={{ formState, setFormState }}>
         <div className={styles.container}>
-          <div className={styles.bottonContainer}>
-            <button onClick={() => handleClose()}>close</button>
-            <button onClick={updateFormInfo}>update</button>
-          </div>
           <div className={styles.titleContainer}>
             {formInfo?.title ? (
               <Title props={formInfo.title} />
@@ -75,6 +71,10 @@ const FormMainPage = ({
           </div>
           <div className={styles.questionContainer}>
             {formInfo?.questions ? <Question /> : <div>Nothing here</div>}
+          </div>
+          <div className={styles.bottonContainer}>
+            <button onClick={() => handleClose()}>close</button>
+            <button onClick={updateFormInfo}>update</button>
           </div>
         </div>
       </FormContext.Provider>
