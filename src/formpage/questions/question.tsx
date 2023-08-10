@@ -15,8 +15,11 @@ const Question = () => {
   useEffect(() => {
     console.log(formState.questions);
     setQuestions(formState.questions);
+  }, [formState.questions]);
+
+  useEffect(() => {
     formState.questions && setSelectedQuestion(formState.questions[0]);
-  }, []);
+  },[])
 
   const addNewTask = useCallback(() => {
     console.log("add");
@@ -41,7 +44,7 @@ const Question = () => {
         console.log("11")
         if (questions) {
           const index = questions.indexOf(q);
-          const nextQ = questions[index - 1];
+          const nextQ = index === questions.length - 1 ? questions[index - 1] : questions[index + 1];
           setSelectedQuestion(nextQ);
         }
       }
@@ -59,9 +62,11 @@ const Question = () => {
       let temp: IQuestion = { ...q, [changedType]: value };
       setFormState({ type: "editQuestion", question: temp });
       setQuestions((prev) => {
+        console.log(formState.questions)
         prev = formState.questions ? [...formState.questions] : [];
         return prev;
       });
+      setSelectedQuestion(temp)
     },
     [formState.questions, setFormState]
   );
@@ -171,6 +176,7 @@ const Question = () => {
                     <div>
                       please input the detail for the response:
                       <input
+                      className={styles.response}
                         type="text"
                         value={selectedQuestion.response}
                         onChange={(e) =>
