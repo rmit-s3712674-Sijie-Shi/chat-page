@@ -1,15 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { IForm } from "../../formpage/form";
 import styles from "./FormCard.module.css";
-import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
-import { styled } from "@mui/material/styles";
+import Tooltip from "@mui/material/Tooltip";
 import { Instance } from "@popperjs/core";
-import EditIcon from '@mui/icons-material/Edit';
-import FormMainPage from "../../formpage/formMainPage";
-import { selectedFormContext } from "../../formpage/formContext";
 
-const FormCard = ({ form, handleOpen }: { form: IForm, handleOpen: any }) => {
-  const { selectedForm, setSelectedForm } = useContext(selectedFormContext)
+const FormCard = ({ form, handleOpen, handleDelete }: { form: IForm, handleOpen: any, handleDelete:any }) => {
 
   const positionRef = React.useRef<{ x: number; y: number }>({
     x: 0,
@@ -25,6 +20,7 @@ const FormCard = ({ form, handleOpen }: { form: IForm, handleOpen: any }) => {
       popperRef.current.update();
     }
   };
+
 
   const trimDate = (date: number) => {
     const dateDiff = new Date().getTime() - date
@@ -101,7 +97,7 @@ const FormCard = ({ form, handleOpen }: { form: IForm, handleOpen: any }) => {
                 },
               }}
             >
-              <span className={styles.delete} onClick={() => {}}></span>
+              <span className={styles.delete} onClick={handleDelete}></span>
             </Tooltip>
           </div>
         </div>

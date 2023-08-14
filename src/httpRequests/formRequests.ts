@@ -28,3 +28,18 @@ export function updataForm(userId: string, form: IForm | undefined) {
     .catch((err) => err);
     return result
 }
+
+
+export function deleteForm(userId: string, form: IForm | undefined, status: string) {
+  const token = localStorage.getItem(userId);
+  const result = axios
+    .post(BaseUrl + `${status === "saved" ? "/deleteSavedForm" : "/deleteSentForm"}`, form, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => res.data)
+    .catch((err) => err);
+    return result
+}

@@ -21,9 +21,9 @@ app.get("/profile", auth, getUserProfile);
 
 app.get("/getuserforms",auth, readUserForms);
 app.post("/createform",auth, createForm);
-app.post("/updateForm",auth, updateForm);
-app.post("/deleteSavedForm",auth, deleteSavedForm);
-app.post("/deleteSentForm",auth, deleteSentForm);
+app.post("/updateForm",auth, updateForm, createForm);
+app.post("/deleteSavedForm",auth, deleteSavedForm, readUserForms);
+app.post("/deleteSentForm",auth, deleteSentForm, readUserForms);
 // app.post("/getsingleform", getSingleForm)
 
 startServer(app, 3001);

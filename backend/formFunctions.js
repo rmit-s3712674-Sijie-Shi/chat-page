@@ -1,7 +1,7 @@
 import { UserForm, FormCreated, SavedForm, SentForm } from "./data.js";
 
 export async function createForm(req, res) {
-  const { form } = req.body;
+  const form = req.body;
   const { userId } = req;
   try {
     await FormCreated.findOneAndUpdate(
@@ -32,11 +32,11 @@ export async function readUserForms(req, res) {
   const sentForms = await SentForm.find({ userId: userId });
   res.send({
     savedForms,
-    sentForms
+    sentForms,
   });
 }
 
-export async function updateForm(req, res) {
+export async function updateForm(req, res, next) {
   const { formId, questions, title, timestamp } = req.body;
   SavedForm.findOneAndUpdate(
     { formId: formId },
@@ -50,38 +50,48 @@ export async function updateForm(req, res) {
     { new: true }
   )
     .then((data) => {
-      res.send(data);
+      if (data) {
+        res.send(data);
+      } else {
+        next();
+      }
     })
-    .catch((err) => res.status(422).send(err.message));
+    .catch((err) => {
+      res.status(422).send(err);
+    });
 }
 
-export async function deleteSavedForm(req, res) {
+export async function deleteSavedForm(req, res, next) {
   const { formId } = req.body;
   const { userId } = req;
   try {
     await SavedForm.findOneAndDelete({ formId: formId });
-    const result = await FormCreated.findOneAndUpdate(
+    await FormCreated.findOneAndUpdate(
       { userId: userId },
       { $pull: { savedForms: formId } },
       { new: true }
     );
-    res.send(result);
+    next();
   } catch (err) {
     res.status.send(err);
   }
 }
 
-export async function deleteSentForm(req, res) {
+export async function deleteSentForm(req, res, next) {
+  //in progress
   const { formId } = req.body;
   const { userId } = req;
   try {
-    await SavedForm.findOneAndDelete({ formId: formId });
-    const result = await FormCreated.findOneAndUpdate(
+    await SavedForm.findOneAndDelete(
+      { formId: formId },
+      { new: true }
+    );
+    await FormCreated.findOneAndUpdate(
       { userId: userId },
       { $pull: { sentForms: formId } },
       { new: true }
     );
-    res.send(result);
+    next();
   } catch (err) {
     res.status.send(err);
   }

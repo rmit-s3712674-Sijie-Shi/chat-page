@@ -36,7 +36,6 @@ post {{url}}/createform
 {{token}}
 
 {
-  "form" : {
     "formId": "64c8ae2b08a37cf784c10067f2",
     "title":"second",
     "questions":[{
@@ -49,7 +48,6 @@ post {{url}}/createform
     }],
     "timestamp": 0,
     "endtime":0
-}
 }
 
 ### getForm

@@ -86,9 +86,10 @@ const Question = () => {
           {questions?.length ? (
             questions.map((q, index) => (
               <Tooltip title={q.description}
+              key={index}
               placement="bottom"
               arrow>
-              <div className={styles.buttonContainer}>
+              <div className={styles.buttonContainer} key={index}>
                 <button
                   key={index}
                   className={styles.menuButton}
