@@ -63,11 +63,11 @@ const savedForms = new mongoose.Schema({
 const sentForms = new mongoose.Schema({
   formId: { type: String, unique: true},
   userId: { type: String },
-  responsorId: { type: [String] },
   title: { type: String },
   questions: { type: Array },
   timestamp: { type: String },
   endtime: { type: String},
+  permissions: { type: String },
 });
 
 const formCreated = new mongoose.Schema({

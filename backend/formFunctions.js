@@ -10,7 +10,6 @@ export async function createForm(req, res) {
       },
       { $push: { savedForms: form.formId } }
     );
-    console.log(form);
     const result = await SavedForm.create({
       userId: userId,
       formId: form.formId,
@@ -82,10 +81,7 @@ export async function deleteSentForm(req, res, next) {
   const { formId } = req.body;
   const { userId } = req;
   try {
-    await SavedForm.findOneAndDelete(
-      { formId: formId },
-      { new: true }
-    );
+    await SavedForm.findOneAndDelete({ formId: formId }, { new: true });
     await FormCreated.findOneAndUpdate(
       { userId: userId },
       { $pull: { sentForms: formId } },
@@ -97,7 +93,12 @@ export async function deleteSentForm(req, res, next) {
   }
 }
 
-// db.stores.updateMany(
-//     { _id: 1 },
-//     { $pull: { fruits: { $in: [ "apples", "oranges" ] }, vegetables: "carrots" } }
-// )
+export async function createSentForm(req, res, next) {
+  const form = req.body;
+  const { userId } = req;
+  try {
+    await SentForm.create({ ...form, userId })
+  } catch(e) {
+    res.status(422).send(e)
+  }
+}
