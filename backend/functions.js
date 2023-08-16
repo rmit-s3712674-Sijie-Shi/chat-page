@@ -71,7 +71,7 @@ export const auth = async (req, res, next) => {
       res.status(403).send("Wrong credential.");
     }    
     else {
-      console.log(decoded.id)
+      console.log("userid: " + decoded.id)
       req.userId = decoded.id;
       next();
     }

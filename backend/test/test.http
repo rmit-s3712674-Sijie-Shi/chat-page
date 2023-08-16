@@ -91,3 +91,9 @@ post {{url}}/deleteForm
   "formId" : "64c8ae2b08a37cf784c10067f1",
   "status" : "savedForms"
 }
+
+###
+post {{url}}/sentForm
+{{json}}
+{{token}}
+

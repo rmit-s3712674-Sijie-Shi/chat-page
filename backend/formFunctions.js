@@ -1,4 +1,5 @@
 import { UserForm, FormCreated, SavedForm, SentForm } from "./data.js";
+import io from "socket.io-client";
 
 export async function createForm(req, res) {
   const form = req.body;
@@ -93,12 +94,28 @@ export async function deleteSentForm(req, res, next) {
   }
 }
 
-export async function createSentForm(req, res, next) {
-  const form = req.body;
-  const { userId } = req;
+export async function createSentForm(req, res) {
+  // const form = req.body;
+  // const { userId } = req;
   try {
-    await SentForm.create({ ...form, userId })
-  } catch(e) {
-    res.status(422).send(e)
+    // await FormCreated.findOneAndUpdate(
+    //   {
+    //     userId: userId,
+    //   },
+    //   { $push: { sentForms: form.formId } }
+    // );
+    // await SavedForm.findOneAndDelete({ formId: form.formId }, { new: true });
+    // await SentForm.create({ ...form, userId });
+    sendMessage('message?');
+  } catch (e) {
+    console.log("e" + e)
+    res.status(422).send(e);
   }
+}
+
+
+const sendMessage = (message) => {
+  const socket = io('http://localhost:2333');
+  console.log("message: " + message)
+  socket.emit("chat message", message)
 }

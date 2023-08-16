@@ -8,11 +8,14 @@ import {
   getUserProfile,
   auth,
 } from "./functions.js";
-import { readUserForms, createForm, updateForm, deleteSavedForm, deleteSentForm } from "./formFunctions.js";
+import { readUserForms, createForm, updateForm, deleteSavedForm, deleteSentForm, createSentForm } from "./formFunctions.js";
+
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+
 
 app.post("/login", login);
 app.post("/createuser", createUser);
@@ -24,6 +27,8 @@ app.post("/createform",auth, createForm);
 app.post("/updateForm",auth, updateForm, createForm);
 app.post("/deleteSavedForm",auth, deleteSavedForm, readUserForms);
 app.post("/deleteSentForm",auth, deleteSentForm, readUserForms);
+app.post('/sentForm', auth, createSentForm)
 // app.post("/getsingleform", getSingleForm)
 
 startServer(app, 3001);
+
