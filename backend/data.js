@@ -30,8 +30,14 @@
 // }
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
+import dynamoose from "dynamoose";
+import * as fs from "node:fs";
+
+const rawJson = fs.readFileSync("./environment/secret.json");
+const { mongo } = JSON.parse(rawJson);
 
 mongoose.connect("mongodb://127.0.0.1:27017/form-auth");
+
 
 const UserSchema = new mongoose.Schema({
   username: { type: String, unique: true },
@@ -67,7 +73,7 @@ const sentForms = new mongoose.Schema({
   questions: { type: Array },
   timestamp: { type: String },
   endtime: { type: String},
-  permissions: { type: String },
+  permissions: { type: [String] },
 });
 
 const formCreated = new mongoose.Schema({
