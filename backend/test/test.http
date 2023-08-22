@@ -36,7 +36,7 @@ post {{url}}/createform
 {{token}}
 
 {
-    "formId": "64c8ae2b08a37cf784c10067f2",
+    "formId": "64c8ae2b08a37cf784c10067f1",
     "title":"second",
     "questions":[{
         "id": "64c8ae2b08a37cf784c10067q21",
@@ -58,6 +58,7 @@ get {{url}}/getuserforms
 ### updateForm
 post {{url}}/updateForm
 {{json}}
+{{token}}
 
 {
     "formId": "64c8ae2b08a37cf784c10067f1",

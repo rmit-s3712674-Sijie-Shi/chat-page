@@ -32,9 +32,14 @@
 }
 
 .bottonContainer {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
   border: 1px black solid;
   border-radius: 2rem;
   width: 90%;
   text-align: center;
   padding: 5%;
+
 }

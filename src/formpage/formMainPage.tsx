@@ -8,6 +8,8 @@ import { v4 as uuidv4 } from "uuid";
 import { useLocation } from "react-router-dom";
 import { updataForm } from "../httpRequests/formRequests";
 import { IUser } from "../globleTypes/userTypes";
+import Modal from "@mui/material/Modal";
+import SendQuestionModal from "./sendQuestionModal/sendQuestionModal";
 
 const FormMainPage = ({
   handleClose,
@@ -45,6 +47,7 @@ const FormMainPage = ({
 
   const [formState, setFormState] = useReducer(formReducer, form);
   const [formInfo, setFormInfo] = useState<IForm>();
+  const [showSendModal, setShowSendModal] = useState<boolean>(false);
   const location = useLocation().state;
   useEffect(() => {
     setFormInfo(form);
@@ -56,6 +59,16 @@ const FormMainPage = ({
     updataForm(location.user._id, formInfo)
       .then(() => handleClose())
       .catch((err) => console.error(err));
+  };
+
+  const openSendModal = () => {
+    setShowSendModal(true);
+    console.log(showSendModal);
+  };
+
+  const closeSendModal = () => {
+    setShowSendModal(false);
+    handleClose();
   };
 
   return (
@@ -75,6 +88,9 @@ const FormMainPage = ({
           <div className={styles.bottonContainer}>
             <button onClick={() => handleClose()}>close</button>
             <button onClick={updateFormInfo}>update</button>
+              <SendQuestionModal
+                formID={formState.id || ""}
+              />
           </div>
         </div>
       </FormContext.Provider>
