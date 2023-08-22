@@ -18,33 +18,6 @@ const FormMainPage = ({
   handleClose: any;
   form: IForm;
 }) => {
-  // const formData: IForm = {
-  //   id: "",
-  //   title: "title",
-  //   questions: [
-  //     {
-  //       id: uuidv4(),
-  //       description: "the first question",
-  //       questionsType: "text",
-  //       response: "",
-  //       maxRate: 0,
-  //       minRate: 0,
-  //     },
-  //   ],
-  //   timestamp: 0,
-  //   endtime: 0,
-  // };
-
-  // const formStateReducer = (state: IForm, action: { type: string, param: string | number | IQuestion}) => {
-  //     switch(action.type) {
-  //         case "title" :
-  //             state.title = typeof action.param === "string" ? action.param : state.title
-  //             return state
-  //         case "description" :
-
-  //     }
-  // }
-
   const [formState, setFormState] = useReducer(formReducer, form);
   const [formInfo, setFormInfo] = useState<IForm>();
   const [showSendModal, setShowSendModal] = useState<boolean>(false);
@@ -89,7 +62,7 @@ const FormMainPage = ({
             <button onClick={() => handleClose()}>close</button>
             <button onClick={updateFormInfo}>update</button>
               <SendQuestionModal
-                formID={formState.id || ""}
+                formID={form.formId || "no id"}
               />
           </div>
         </div>
