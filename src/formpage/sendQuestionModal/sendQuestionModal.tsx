@@ -26,11 +26,12 @@ const SendQuestionModal = ({ formID }: { formID: string }) => {
         <Box className={styles.container}>
           <h2 id="child-modal-title">Set Permission For this Form</h2>
           <p id="child-modal-description">{formID}</p>
-          <select onChange={(e) => handleOptionChange(e.target.value)} value={permission}>
+          <select onChange={(e) => handleOptionChange(e.target.value)} value={permission} className={styles.selectPermission}>
             <option value="every one">every one</option>
             <option value="certain people">certain people</option>
           </select>
-          {permission === "certain people" && <input placeholder="input user email"></input>}
+          {permission === "certain people" && <input placeholder="input user email" className={styles.permissionInput}></input>}
+          <div className={styles.buttonContainer}>
           <button
             onClick={handleSaveModalClose}
             className={styles.cancelButton}
@@ -40,6 +41,7 @@ const SendQuestionModal = ({ formID }: { formID: string }) => {
           <button onClick={handleSaveModalClose} className={styles.sendButton}>
             Send
           </button>
+          </div>
         </Box>
       </Modal>
     </>
