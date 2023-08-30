@@ -20,26 +20,61 @@ export function updataForm(userId: string, form: IForm | undefined) {
   const result = axios
     .post(BaseUrl + "/updateForm", form, {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     })
     .then((res) => res.data)
     .catch((err) => err);
-    return result
+  return result;
 }
 
-
-export function deleteForm(userId: string, form: IForm | undefined, status: string) {
+export function deleteForm(
+  userId: string,
+  form: IForm | undefined,
+  status: string
+) {
   const token = localStorage.getItem(userId);
   const result = axios
-    .post(BaseUrl + `${status === "saved" ? "/deleteSavedForm" : "/deleteSentForm"}`, form, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    .post(
+      BaseUrl +
+        `${status === "saved" ? "/deleteSavedForm" : "/deleteSentForm"}`,
+      form,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
     .then((res) => res.data)
     .catch((err) => err);
-    return result
+  return result;
+}
+
+export function sendForm(
+  userId: string,
+  formId: string | undefined,
+  permissions: Array<string>,
+  endtime: string,
+) {
+  const token = localStorage.getItem(userId);
+  const result = axios
+    .post(
+      BaseUrl + "/sentForm",
+      {
+        formId,
+        permissions,
+        endtime,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    .then((res) => res.data)
+    .catch((err) => err);
+  return result;
 }

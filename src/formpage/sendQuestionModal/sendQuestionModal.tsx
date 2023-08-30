@@ -1,9 +1,12 @@
 import React, { useEffect, useReducer, useState } from "react";
 import styles from "./sendQuestionModal.module.css";
 import { Modal, Box, Button } from "@mui/material";
+import { sendForm } from "../../httpRequests/formRequests"
+import { useLocation } from "react-router-dom";
 const SendQuestionModal = ({ formID }: { formID: string }) => {
   const [open, setOpen] = React.useState(false);
   const [permission, setPermission] = useState("every one");
+  const location = useLocation().state;
   const handleSaveModalOpen = () => {
     setOpen(true);
   };
@@ -14,6 +17,10 @@ const SendQuestionModal = ({ formID }: { formID: string }) => {
   const handleOptionChange = (value: any) => {
     setPermission(value);
   };
+
+  const handleSendForm = () => {
+    sendForm(location.user._id, formID, ["All"], "")
+  }
 
   return (
     <>
