@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, useState } from "react";
 import styles from "./sendQuestionModal.module.css";
 import { Modal, Box, Button } from "@mui/material";
-import { sendForm } from "../../httpRequests/formRequests"
+import { sendForm } from "../../httpRequests/formRequests";
 import { useLocation } from "react-router-dom";
 const SendQuestionModal = ({ formID }: { formID: string }) => {
   const [open, setOpen] = React.useState(false);
@@ -20,7 +20,9 @@ const SendQuestionModal = ({ formID }: { formID: string }) => {
 
   const handleSendForm = () => {
     sendForm(location.user._id, formID, ["All"], "")
-  }
+      .then((res) => console.log(res))
+      .catch((e) => console.error(e));
+  };
 
   return (
     <>
@@ -33,21 +35,33 @@ const SendQuestionModal = ({ formID }: { formID: string }) => {
         <Box className={styles.container}>
           <h2 id="child-modal-title">Set Permission For this Form</h2>
           <p id="child-modal-description">{formID}</p>
-          <select onChange={(e) => handleOptionChange(e.target.value)} value={permission} className={styles.selectPermission}>
+          <select
+            onChange={(e) => handleOptionChange(e.target.value)}
+            value={permission}
+            className={styles.selectPermission}
+          >
             <option value="every one">every one</option>
             <option value="certain people">certain people</option>
           </select>
-          {permission === "certain people" && <input placeholder="input user email" className={styles.permissionInput}></input>}
+          {permission === "certain people" && (
+            <input
+              placeholder="input user email"
+              className={styles.permissionInput}
+            ></input>
+          )}
           <div className={styles.buttonContainer}>
-          <button
-            onClick={handleSaveModalClose}
-            className={styles.cancelButton}
-          >
-            Close
-          </button>
-          <button onClick={handleSaveModalClose} className={styles.sendButton}>
-            Send
-          </button>
+            <button
+              onClick={handleSaveModalClose}
+              className={styles.cancelButton}
+            >
+              Close
+            </button>
+            <button
+              onClick={handleSaveModalClose}
+              className={styles.sendButton}
+            >
+              Send
+            </button>
           </div>
         </Box>
       </Modal>
