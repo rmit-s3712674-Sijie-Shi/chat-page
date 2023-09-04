@@ -52,7 +52,7 @@ const Login = ({ setShow } : { setShow:any }) => {
         <>
             <div className={styles.container}>
                 <div className={styles.loginForm}>
-                    <span className={styles.logo}>Private Chat</span>
+                    <span className={styles.logo}>Private Survey</span>
                     <span className={styles.login}>Login</span>
                     <div className={styles.form}>
                         <input type="email" placeholder="email" onChange={(e) =>{dispatch({type: "email", parameter:e.target.value})}}/>
