@@ -51,7 +51,6 @@ const FormIndex = () => {
 
   useEffect(() => {
     if (user) {
-      console.log(user.user._id)
       getUserForms(user.user._id)
         .then((res) => setFormState(res))
         .catch((err) => setError(err));

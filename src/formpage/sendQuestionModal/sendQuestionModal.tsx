@@ -5,7 +5,10 @@ import { sendForm } from "../../httpRequests/formRequests";
 import { useLocation } from "react-router-dom";
 const SendQuestionModal = ({ formID }: { formID: string }) => {
   const [open, setOpen] = React.useState(false);
-  const [permission, setPermission] = useState("every one");
+  const [permission, setPermission] = useState({
+    sendTo: "every one",
+    target: "All",
+  });
   const location = useLocation().state;
   const handleSaveModalOpen = () => {
     setOpen(true);
@@ -15,11 +18,26 @@ const SendQuestionModal = ({ formID }: { formID: string }) => {
   };
 
   const handleOptionChange = (value: any) => {
-    setPermission(value);
+    setPermission((prev) => {
+      return {
+        sendTo: value,
+        target: value === "certain people" ? "" : "All",
+      };
+    });
+  };
+
+  const handleUserInputChange = (value: any) => {
+    setPermission((prev) => {
+      return {
+        ...prev,
+        target: value,
+      };
+    });
   };
 
   const handleSendForm = () => {
-    sendForm(location.user._id, formID, ["All"], "")
+    const permissions = permission.target.split(" ");
+    sendForm(location.user._id, formID, permissions, "585205399")
       .then((res) => console.log(res))
       .catch((e) => console.error(e));
   };
@@ -37,16 +55,17 @@ const SendQuestionModal = ({ formID }: { formID: string }) => {
           <p id="child-modal-description">{formID}</p>
           <select
             onChange={(e) => handleOptionChange(e.target.value)}
-            value={permission}
+            value={permission.sendTo}
             className={styles.selectPermission}
           >
             <option value="every one">every one</option>
             <option value="certain people">certain people</option>
           </select>
-          {permission === "certain people" && (
+          {permission.sendTo === "certain people" && (
             <input
               placeholder="input user email"
               className={styles.permissionInput}
+              onChange={(e) => handleUserInputChange(e.target.value)}
             ></input>
           )}
           <div className={styles.buttonContainer}>
@@ -56,10 +75,7 @@ const SendQuestionModal = ({ formID }: { formID: string }) => {
             >
               Close
             </button>
-            <button
-              onClick={handleSaveModalClose}
-              className={styles.sendButton}
-            >
+            <button onClick={handleSendForm} className={styles.sendButton}>
               Send
             </button>
           </div>

@@ -59,6 +59,7 @@ export function sendForm(
   endtime: string,
 ) {
   const token = localStorage.getItem(userId);
+  console.log(permissions)
   const result = axios
     .post(
       BaseUrl + "/sentForm",
