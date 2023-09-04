@@ -1,6 +1,6 @@
 @url=http://localhost:3001
 @json=Content-Type: application/json
-@token=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzhhZDRjMDhhMzdjZjc4NGMxMDA1OSIsImlhdCI6MTY5MTExMTQwOCwiZXhwIjoxNjkzNzAzNDA4fQ.JnDzARUL11R3hWY08TvbUjQ5gtK8M4CKF_slSCf-wZ8
+@token=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzhhZDRjMDhhMzdjZjc4NGMxMDA1OSIsImlhdCI6MTY5MzgyMDkyMywiZXhwIjoxNjk2NDEyOTIzfQ.TKbJ4wwzQIxBi2hsLGxpCgYQ2X9aKFCcK0OeQndJM-8
 
 ### 查询所有用户
 get {{url}}/users

@@ -44,7 +44,7 @@ const Login = ({ setShow } : { setShow:any }) => {
         console.log(res.data.user)
         localStorage.setItem(res.data.user._id, res.data.token)
         setCookie("user", res.data, { path: "/", expires: getDateAfter(30) } )
-        navigate("/main", { state: cookies.user })
+        navigate("/main", { state: res.data })
     })
      .catch(err => console.error(err))
     }

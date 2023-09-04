@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useState } from "react";
 import { IUser } from "../globleTypes/userTypes";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getUserForms, deleteForm } from "../httpRequests/formRequests";
 import { IForm } from "../formpage/form";
 import FormCard from "./formCard/FormCard";
@@ -13,18 +13,6 @@ import {
   selectedFormState,
 } from "../formpage/formContext";
 import { v4 as uuidv4 } from "uuid";
-
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
 
 const createRandomForm = (): IForm => {
   return {
@@ -47,6 +35,7 @@ const createRandomForm = (): IForm => {
 
 const FormIndex = () => {
   const user: IUser = useLocation().state;
+  const navigation = useNavigate();
   const [formState, setFormState] = useState({
     savedForms: [],
     sentForms: [],
@@ -61,13 +50,18 @@ const FormIndex = () => {
   );
 
   useEffect(() => {
-    getUserForms(user.user._id)
-      .then((res) => setFormState(res))
-      .catch((err) => setError(err));
+    if (user) {
+      console.log(user.user._id)
+      getUserForms(user.user._id)
+        .then((res) => setFormState(res))
+        .catch((err) => setError(err));
+    } else {
+      navigation("/");
+    }
   }, []);
 
   const handleDelete = (form: IForm, status: string) => {
-    console.log(status)
+    console.log(status);
     deleteForm(user.user._id, form, status)
       .then((res) => setFormState(res))
       .catch((err) => setError(err));
@@ -102,13 +96,23 @@ const FormIndex = () => {
           <div className={styles.saved}>
             <div className={styles.title}>saved</div>
             {formState?.savedForms.map((form: IForm) => (
-              <FormCard key={form.id} form={form} handleOpen={handleOpen} handleDelete={() => handleDelete(form, "saved")}/>
+              <FormCard
+                key={form.id}
+                form={form}
+                handleOpen={handleOpen}
+                handleDelete={() => handleDelete(form, "saved")}
+              />
             ))}
           </div>
           <div className={styles.saved}>
             <div className={styles.title}>sent</div>
             {formState?.sentForms.map((form: IForm) => (
-              <FormCard key={form.id} form={form} handleOpen={handleOpen} handleDelete={() => handleDelete(form, "sent")}/>
+              <FormCard
+                key={form.id}
+                form={form}
+                handleOpen={handleOpen}
+                handleDelete={() => handleDelete(form, "sent")}
+              />
             ))}
           </div>
         </div>

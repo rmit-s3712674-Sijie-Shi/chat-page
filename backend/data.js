@@ -36,8 +36,10 @@ import * as fs from "node:fs";
 const rawJson = fs.readFileSync("./environment/secret.json");
 const { mongo } = JSON.parse(rawJson);
 
-mongoose.connect("mongodb://127.0.0.1:27017/form-auth");
-
+mongoose
+  .connect("mongodb://127.0.0.1:27017/form-auth")
+  .then((res) => console.log("mongodb connected"))
+  .catch((e) => console.error(e));
 
 const UserSchema = new mongoose.Schema({
   username: { type: String, unique: true },
@@ -59,7 +61,7 @@ const UserFormSchema = new mongoose.Schema({
 });
 
 const savedForms = new mongoose.Schema({
-  formId: { type: String, unique: true},
+  formId: { type: String, unique: true },
   userId: { type: String },
   title: { type: String },
   questions: { type: Array },
@@ -67,12 +69,12 @@ const savedForms = new mongoose.Schema({
 });
 
 const sentForms = new mongoose.Schema({
-  formId: { type: String, unique: true},
+  formId: { type: String, unique: true },
   userId: { type: String },
   title: { type: String },
   questions: { type: Array },
   timestamp: { type: String },
-  endtime: { type: String},
+  endtime: { type: String },
   permissions: { type: [String] },
 });
 
@@ -81,7 +83,6 @@ const formCreated = new mongoose.Schema({
   savedForms: { type: [String] },
   sentForms: { type: [String] },
 });
-
 
 export const FormCreated = mongoose.model("FormCreated", formCreated);
 

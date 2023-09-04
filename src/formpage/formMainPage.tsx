@@ -29,6 +29,7 @@ const FormMainPage = ({
   }, [formState]);
 
   const updateFormInfo = () => {
+    console.log(location)
     updataForm(location.user._id, formInfo)
       .then(() => handleClose())
       .catch((err) => console.error(err));
