@@ -38,7 +38,7 @@ const SendQuestionModal = ({ formID }: { formID: string }) => {
   const handleSendForm = () => {
     const permissions = permission.target.split(" ");
     sendForm(location.user._id, formID, permissions, "585205399")
-      .then((res) => console.log(res))
+      .then((res) => setOpen(false))
       .catch((e) => console.error(e));
   };
 
