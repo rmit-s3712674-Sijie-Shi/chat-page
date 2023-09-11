@@ -13,6 +13,7 @@ import {
   selectedFormState,
 } from "../formpage/formContext";
 import { v4 as uuidv4 } from "uuid";
+import ReplyMainPage from "../replyMainPage/ReplyMainPage";
 
 const createRandomForm = (): IForm => {
   return {
@@ -41,8 +42,10 @@ const FormIndex = () => {
     sentForms: [],
   });
   const [formSelected, setFormSelected] = useState<IForm>();
+  const [replySelected, setReplySelected] = useState<IForm>()
   const [error, setError] = useState();
   const [open, setOpen] = React.useState(false);
+  const [replyOpen, setReplyOpen] = useState(false)
 
   const [selectedForm, setSelectedForm] = useReducer(
     selectFormReducer,
@@ -77,6 +80,18 @@ const FormIndex = () => {
       .catch((err) => setError(err))
       .finally(() => setOpen(false));
   };
+
+  const handleReplyOpen = (form: IForm) => {
+    setReplyOpen(true)
+    setReplySelected(form)
+  }
+
+  const handleReplyClose = () => {
+    getUserForms(user.user._id)
+      .then((res) => setFormState(res))
+      .catch((err) => setError(err))
+      .finally(() => setReplyOpen(false));
+  };
   return (
     <>
       <selectedFormContext.Provider value={{ selectedForm, setSelectedForm }}>
@@ -109,7 +124,7 @@ const FormIndex = () => {
               <FormCard
                 key={form.id}
                 form={form}
-                handleOpen={handleOpen}
+                handleOpen={handleReplyOpen}
                 handleDelete={() => handleDelete(form, "sent")}
               />
             ))}
@@ -121,6 +136,14 @@ const FormIndex = () => {
             <FormMainPage handleClose={handleClose} form={formSelected} />
           </Modal>
         )}
+
+        {replySelected && (
+          <Modal open={replyOpen} onClose={handleReplyClose}>
+            <ReplyMainPage></ReplyMainPage>
+          </Modal>
+        )
+
+        }
       </selectedFormContext.Provider>
     </>
   );
